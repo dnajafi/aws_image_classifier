@@ -1,0 +1,6 @@
+flask
+flask-wtf
+boto
+h5py
+request
+boto3

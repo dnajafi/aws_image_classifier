@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<HEAD>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</HEAD>
+
+<h1>Welcome to Blaise's Image Classifier!</h1>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class=flashes>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+
+<form method="POST" enctype="multipart/form-data" action=".">
+    {{ form.csrf_token }}
+    {{ form.example }}
+    <input type="submit" value="Classify Photo">
+</form>
+
+<br>
+
+<a href="/bucketContents">View photos currently in bucket.</a>
+
+<br>
+
+{% if labels %}
+    <h3>Here are the potential object(s) in your photo:</h3>
+    <ul class=flashes>
+        {% for label in labels %}
+            <li>{{ label }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
